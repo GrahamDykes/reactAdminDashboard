@@ -1,7 +1,7 @@
 import { createContext, useState, useMemo } from "react";
-import { createTheme } from "mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
-// color design tokens
+// color design tokens export
 export const tokens = (mode) => ({
   ...(mode === "dark"
     ? {
@@ -20,7 +20,7 @@ export const tokens = (mode) => ({
           100: "#d0d1d5",
           200: "#a1a4ab",
           300: "#727681",
-          400: "#434957",
+          400: "#1F2A40",
           500: "#141b2d",
           600: "#101624",
           700: "#0c101b",
@@ -50,15 +50,15 @@ export const tokens = (mode) => ({
           900: "#2c100f",
         },
         blueAccent: {
-          100: "#f7e2fe",
-          200: "#efc6fd",
-          300: "#e8a9fc",
-          400: "#e08dfb",
-          500: "#d870fa",
-          600: "#ad5ac8",
-          700: "#824396",
-          800: "#562d64",
-          900: "#2b1632",
+          100: "#e1e2fe",
+          200: "#c3c6fd",
+          300: "#a4a9fc",
+          400: "#868dfb",
+          500: "#6870fa",
+          600: "#535ac8",
+          700: "#3e4396",
+          800: "#2a2d64",
+          900: "#151632",
         },
       }
     : {
@@ -77,9 +77,9 @@ export const tokens = (mode) => ({
           100: "#040509",
           200: "#080b12",
           300: "#0c101b",
-          400: "#f2f0f0",
+          400: "#f2f0f0", // manually changed
           500: "#141b2d",
-          600: "#434957",
+          600: "#1F2A40",
           700: "#727681",
           800: "#a1a4ab",
           900: "#d0d1d5",
@@ -107,109 +107,108 @@ export const tokens = (mode) => ({
           900: "#f8dcdb",
         },
         blueAccent: {
-          100: "#2b1632",
-          200: "#562d64",
-          300: "#824396",
-          400: "#ad5ac8",
-          500: "#d870fa",
-          600: "#e08dfb",
-          700: "#e8a9fc",
-          800: "#efc6fd",
-          900: "#f7e2fe",
+          100: "#151632",
+          200: "#2a2d64",
+          300: "#3e4396",
+          400: "#535ac8",
+          500: "#6870fa",
+          600: "#868dfb",
+          700: "#a4a9fc",
+          800: "#c3c6fd",
+          900: "#e1e2fe",
         },
       }),
 });
 
-//mui theme settings
+// mui theme settings
 export const themeSettings = (mode) => {
   const colors = tokens(mode);
-
   return {
     palette: {
       mode: mode,
-      ...colors(
-        mode === "dark"
-          ? {
-              primary: {
-                main: colors.primary[500],
-              },
-              secondary: {
-                main: colors.greenAccent[500],
-              },
-              neutral: {
-                dark: colors.grey[700],
-                main: colors.grey[500],
-                ligth: colors.grey[100],
-              },
-              background: {
-                default: colors.primary[500],
-              },
-            }
-          : {
-              primary: {
-                main: colors.primary[100],
-              },
-              secondary: {
-                main: colors.greenAccent[500],
-              },
-              neutral: {
-                dark: colors.grey[700],
-                main: colors.grey[500],
-                ligth: colors.grey[100],
-              },
-              background: {
-                default: "#fcfcfc",
-              },
-            }),
+      ...(mode === "dark"
+        ? {
+            // palette values for dark mode
+            primary: {
+              main: colors.primary[500],
+            },
+            secondary: {
+              main: colors.greenAccent[500],
+            },
+            neutral: {
+              dark: colors.grey[700],
+              main: colors.grey[500],
+              light: colors.grey[100],
+            },
+            background: {
+              default: colors.primary[500],
+            },
+          }
+        : {
+            // palette values for light mode
+            primary: {
+              main: colors.primary[100],
+            },
+            secondary: {
+              main: colors.greenAccent[500],
+            },
+            neutral: {
+              dark: colors.grey[700],
+              main: colors.grey[500],
+              light: colors.grey[100],
+            },
+            background: {
+              default: "#fcfcfc",
+            },
+          }),
     },
-    typography : {
-        fontFamily : ["Jersey 15 Charted", "sans-serif"].join(","),
-        fontSize: 12,
-        h1: {
-            fontFamily : ["Jersey 15 Charted", "sans-serif"].join(","),
-            fontSize: 40,
-        },
-        h2: {
-            fontFamily : ["Jersey 15 Charted", "sans-serif"].join(","),
-            fontSize: 32,
-        },
-        h3: {
-            fontFamily : ["Jersey 15 Charted", "sans-serif"].join(","),
-            fontSize: 24,
-        },
-        h4: {
-            fontFamily : ["Jersey 15 Charted", "sans-serif"].join(","),
-            fontSize: 20,
-        },
-        h5: {
-            fontFamily : ["Jersey 15 Charted", "sans-serif"].join(","),
-            fontSize: 16,
-        },
-        h6: {
-            fontFamily : ["Jersey 15 Charted", "sans-serif"].join(","),
-            fontSize: 14,
-        },
-    }
+    typography: {
+      fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+      fontSize: 12,
+      h1: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 40,
+      },
+      h2: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 32,
+      },
+      h3: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 24,
+      },
+      h4: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 20,
+      },
+      h5: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 16,
+      },
+      h6: {
+        fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
+        fontSize: 14,
+      },
+    },
   };
 };
 
 // context for color mode
-export const ColorModeContrast = createContext({
-    toggleColorMode: () => {}
-}); 
+export const ColorModeContext = createContext({
+  toggleColorMode: () => {},
+});
 
 export const useMode = () => {
-    const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState("dark");
 
-    const colorMode = useMemo(
-        () => ({
-            toggleColorMode: () =>
-            setMode((prev) => (prev === "light" ? "dark" : "ligth" )),   
-        }),
-        []
-    )
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () =>
+        setMode((prev) => (prev === "light" ? "dark" : "light")),
+    }),
+    []
+  );
 
-    const theme = useMemo( ()=> createTheme(themeSettings(mode)), [mode]);
-
-    return [theme, colorMode];
-}
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  return [theme, colorMode];
+};
