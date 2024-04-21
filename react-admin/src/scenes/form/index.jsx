@@ -43,6 +43,7 @@ const Form = () => {
                 variant="filled"
                 type="text"
                 label="First Name"
+                // the function that runs when you youch OUT of it
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={values.firstName}
