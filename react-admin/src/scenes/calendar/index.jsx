@@ -5,7 +5,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import { formatDate } from "@fullcalendar/core";
-// import FullCalendar from "@fullcalendar/react";
+
 
 
 import {
@@ -104,6 +104,7 @@ const Calendar = () => {
               left: "prev,next today",
               center: "title",
               right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+
             }}
             initialView="dayGridMonth"
             editable={true}
